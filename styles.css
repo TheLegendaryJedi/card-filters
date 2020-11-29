@@ -1,0 +1,22 @@
+/*Filter menu*/
+.filter-menu {
+    width: 100%;
+    border-bottom: 1px solid #D4D4D4;
+    display: inline-block;
+}
+
+.filter-menu .menu-item {
+    padding: 30px;
+}
+
+.filter-menu .menu-item1:hover {
+    padding: 30px;
+}
+
+.filter-menu .menu-item2:hover {
+    padding: 30px;
+}
+
+.filter-menu .menu-item3:hover {
+    padding: 30px;
+}

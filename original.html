@@ -1,0 +1,616 @@
+
+    <style>
+        .center {
+            display: flex;
+        }
+
+        .center h2 {
+            padding-bottom: 10px;
+            padding-top: 30px;
+        }
+
+        .center button.et_pb_button {
+            margin: 30px;
+        }
+
+        .center button.et_pb_button.clicked {
+            background-color: rgba(0, 0, 0, 0.6) !important;
+        }
+
+        .center select.clicked {
+            background-color: rgba(0, 0, 0, 0.6) !important;
+        }
+
+        .center select option.clicked {
+            background-color: rgba(0, 0, 0, 0.6) !important;
+        }
+
+        .center * {
+            margin: auto;
+            text-align: center;
+        }
+
+        .cards:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            margin-top: 80px !important;
+            min-height: 300px;
+        }
+
+        .card img {
+            width: 100%;
+            object-fit: cover;
+            height: 200px;
+        }
+
+        #cards {
+            width: 92%;
+            max-width: 100%;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .fourth_drone {
+            margin: 0 !important;
+            margin-top: 80px !important;
+        }
+
+        .center select:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-top-color: #666;
+            margin-top: 3px;
+            pointer-events: none;
+        }
+
+        .center select {
+            width: 300px !important;
+        }
+
+        .filter-menu {
+            width: 100%;
+            border-bottom: 1px solid #D4D4D4;
+            display: inline-block;
+        }
+
+        .filter-menu .menu-item {
+            padding: 30px;
+        }
+
+        .filter-menu .menu-item1:hover {
+            padding: 30px;
+        }
+
+        .filter-menu .menu-item2:hover {
+            padding: 30px;
+        }
+
+        .filter-menu .menu-item3:hover {
+            padding: 30px;
+        }
+
+
+        .dropbtn {
+            background-color: #fff;
+            color: black;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+            margin-left: 50px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #F9F9F9;
+            min-width: 250px;
+            border: 1px solid #D9D9D9;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+
+        /*.dropdown:hover .dropbtn {
+            border-bottom: 1px solid black;
+        }*/
+
+
+        /*.dropbtn:after {
+            content: "\02C5";
+            color: #71E602;
+            float: right;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .dropdown:hover .dropbtn:after {
+            content: "\02C4";
+            color: #71E602;
+        }*/
+        .dropbtn:after {
+            font-family: ETmodules;
+            content: "3";
+            font-size: 16px;
+            position: absolute;
+            right: -4px;
+            top: 14px;
+            font-weight: 800;
+            color: #71e602;
+        }
+
+        /* The container-commercial */
+        .container-commercial {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            padding-top: 7px;
+            margin: 25px;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Hide the browser's default checkbox */
+        .container-commercial input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #fff;
+            border: 1px solid #D4D4D4;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .container-commercial:hover input~.checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        .container-commercial input:checked~.checkmark {
+            background-color: #71E602;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+        .container-commercial input:checked~.checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+        .container-commercial .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .dropdown .dropbtn {
+            font-family: 'Roboto Condensed';
+            font-style: bold;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+            color: #000000;
+            text-transform: uppercase;
+        }
+
+        .dropdown .category_item {
+            font-family: 'Roboto Condensed';
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 14px;
+            color: #000000;
+            text-transform: uppercase;
+            width: max-content;
+        }
+
+        .container-card {
+            padding-top: 20px;
+            color: black;
+            margin: auto;
+            text-align: center;
+        }
+
+        .columns-container {
+            display: table;
+        }
+
+        .col-menu-1 {
+            display: table-cell;
+        }
+
+        footer {
+            margin-top: 400px;
+        }
+
+        @media (max-width: 768px) {
+            .container-commercial{
+                margin: 10px;
+            }
+            .columns-container {
+                display: block;
+            }
+            .dropdown:hover .dropdown-content{
+                min-width: 0px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .dropdown:hover .dropdown-content {
+                    display: block;
+                    min-width: 400px;
+            }
+        }
+    </style>
+
+
+    <div class="filter-menu">
+
+        <div class="dropdown">
+            <button class="dropbtn">Airframe Type</button>
+            <div class="dropdown-content parent_id_28">
+                <div class="columns-container">
+                    <div class="col-menu-1"></div>
+                    <div class="col-menu-2"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="dropdown">
+            <button class="dropbtn">Application</button>
+            <div class="dropdown-content parent_id_29">
+                <div class="columns-container">
+                    <div class="col-menu-1"></div>
+                    <div class="col-menu-2"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Manufacturer</button>
+            <div class="dropdown-content parent_id_31">
+                <div class="columns-container">
+                    <div class="col-menu-1"></div>
+                    <div class="col-menu-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <div class="cards">
+    </div> -->
+    <div id="cards" class="et_pb_row et_pb_row_1 et_pb_row_5col">
+    </div>
+
+
+    <script>
+        let cat_to_filter = [];
+        let drones_el = document.getElementsByClassName("card");
+
+        function remove(array, element) {
+            return array.filter(el => el !== element);
+        }
+        
+        function decodeHTMLEntities(text) {
+            var textArea = document.createElement('textarea');
+            textArea.innerHTML = text;
+            return textArea.value;
+        }
+        const parent_categories = {
+            "28": "Airframe Type",
+            "29": "Application",
+            "31": "Manufacturer"
+        };
+
+        let manufact_brands = [];
+        let manufact_brands_dic = {};
+        let categories_dic = {};
+
+        var show_dropdown = function (e) {
+            let el_dropdown = e.target.parentElement.querySelector('.dropdown-content');
+            if (el_dropdown.style.display === "none") {
+                el_dropdown.style.display = "block";
+            } else {
+                el_dropdown.style.display = "none";
+            }
+        }
+
+        var filter_drones = function (e) {
+            jQuery('#cards .card').removeClass("fourth_drone");
+            jQuery('#cards .card').removeClass("visible_drone");
+            console.log(e.target);
+            let el_to_change;
+            if(e.target.className.includes('checkmark')){
+                el_to_change = e.target.parentElement;
+            } else {
+                el_to_change = e.target;
+            }
+            var el_checkbox = el_to_change.querySelector('input');
+            console.log(el_checkbox);
+            console.log(el_checkbox.checked);
+
+            if (el_checkbox.checked == false) {
+                el_checkbox.checked = true;
+            }
+            else {
+                if (el_checkbox.checked == true) {
+                    el_checkbox.checked = false;
+                }
+            }
+
+            if (el_to_change.type != "select-one") {
+                if (el_to_change.className.includes("clicked")) {
+                    el_to_change.classList.remove("clicked");
+                    cat_to_filter = remove(cat_to_filter, el_to_change.id);
+                } else {
+                    el_to_change.classList.add("clicked");
+                    cat_to_filter.push(el_to_change.id);
+                }
+            } else {
+                let manufact_options = document.querySelectorAll('select option');
+                el_to_change.classList.remove("clicked");
+
+                for (let j = 0; j < manufact_options.length; j++) {
+                    manufact_options[j].classList.remove("clicked");
+                    cat_to_filter = remove(cat_to_filter, manufact_options[j].id);
+                }
+                if (el_to_change.value != 'all') {
+                    el_to_change.classList.add("clicked");
+                    document.querySelector('.parent_id_31 option:checked').classList.add("clicked");
+                    cat_to_filter.push(el_to_change.value);
+                }
+            }
+
+            console.log(cat_to_filter);
+            if (cat_to_filter.length !== 0) {
+                for (let i = 0; i < drones_el.length; i++) {
+                    let show = true;
+                    for (let j = 0; j < cat_to_filter.length; j++) {
+                        let pattern = new RegExp("(<=\\s|\\b)" + cat_to_filter[j] + "(?=[]\\b|\\s|$)");
+                        if (!pattern.test(drones_el[i].className)) {
+                            show = false;
+                        }
+                    }
+                    if (show) {
+                        drones_el[i].style.display = "block";
+                        drones_el[i].classList.add("visible_drone");
+                    } else {
+                        drones_el[i].style.display = "none";
+                        drones_el[i].classList.remove("visible_drone");
+                    }
+                }
+            } else {
+                for (let i = 0; i < drones_el.length; i++) {
+                    drones_el[i].style.display = "block";
+                    drones_el[i].classList.add("visible_drone");
+                }
+            }
+            let visible_drones = document.querySelectorAll(".visible_drone");
+            if (visible_drones.length >= 5) {
+                for (let w = 4; w < visible_drones.length; w += 5) {
+                    visible_drones[w].classList.add('fourth_drone');
+                }
+            }
+        };
+
+        fetch(`https://px4.io/wp-json/wp/v2/project_category?per_page=100`)
+            .then((response) => {
+                return response.json();
+            })
+            .then((myJson) => {
+                for (let key in myJson) {
+                    categories_dic[`${myJson[key].id}`] = myJson[key].name;
+                }
+            });
+
+        for (let i = 0; i < 3; i++) {
+            let cat_number = "";
+            if (i == 0) {
+                cat_number = "28";
+            } else if (i == 1) {
+                cat_number = "29";
+            } else if (i == 2) {
+                cat_number = "31";
+            }
+
+            fetch(`https://px4.io/wp-json/wp/v2/project_category?parent=${cat_number}&per_page=100`)
+                .then((response) => {
+                    return response.json();
+                })
+                .then((myJson) => {
+                    response = myJson;
+                    //console.log(response);
+
+                    let section = document.querySelector(`.parent_id_${cat_number}`);
+                    let columns_container = document.querySelector(`.parent_id_${cat_number} .columns-container`);
+                    let col_menu_1 = document.querySelector(`.parent_id_${cat_number} .columns-container .col-menu-1`);
+                    let col_menu_2 = document.querySelector(`.parent_id_${cat_number} .columns-container .col-menu-2`);
+
+                    let i = 0;
+                    for (let key in response) {
+                        let el_append;
+                        if (cat_number != 31) {
+
+                        } else {
+                            manufact_brands.push(`category_${response[key].id}`);
+                            manufact_brands_dic[`category_${response[key].id}`] = response[key].name;
+                        }
+
+                        el_append = document.createElement("div");
+                        el_append.innerText = decodeHTMLEntities(response[key].name);
+                        el_append.className = "category_item container-commercial";
+                        el_append.id = `category_${response[key].id}`;
+
+                        let el_input = document.createElement('input');
+                        el_input.type = 'checkbox';
+
+                        let el_span = document.createElement('div');
+                        el_span.className = 'checkmark';
+
+                        el_append.prepend(el_span);
+                        el_append.prepend(el_input);
+
+                        if (i <= Math.floor(response.length / 2)) {
+                            col_menu_1.appendChild(el_append);
+                        } else {
+                            col_menu_2.appendChild(el_append);
+                        }
+
+                        i++;
+                    }
+                })
+                .then((myJson) => {
+                    let cat_buttons = document.querySelectorAll(".category_item");
+                    console.log(cat_buttons);
+                    for (let i = 0; i < cat_buttons.length; i++) {
+                        cat_buttons[i].addEventListener('click', filter_drones);
+                    }
+
+                    let dropdowns = document.querySelectorAll(".dropdown");
+                    for (let i = 0; i < dropdowns.length; i++) {
+                        dropdowns[i].addEventListener('click', show_dropdown);
+                    }
+
+                });
+        }
+
+        fetch('https://px4.io/wp-json/wp/v2/project?status=publish&per_page=100')
+            .then((response) => {
+                return response.json();
+            })
+            .then((myJson) => {
+                drones = myJson;
+                //console.log(drones);
+
+
+                for (let key in drones) {
+                    if (!drones[key].project_category.includes(56)) {
+                        fetch(
+                            `https://px4.io/wp-json/wp/v2/media/${drones[key].featured_media}?per_page=100`)
+                            .then((response) => {
+                                return response.json();
+                            })
+                            .then((myJson2) => {
+                                let drones_div = document.getElementById("cards");
+
+                                let div = document.createElement("div");
+                                let drone_class = "card et_pb_column et_pb_column_1_5 visible_drone";
+                                let drone_brand = '';
+
+                                for (let cat in drones[key].project_category) {
+                                    drone_class += ` category_${drones[key].project_category[cat]}`;
+                                    if (manufact_brands.includes(
+                                        `category_${drones[key].project_category[cat]}`)) {
+                                        drone_brand = manufact_brands_dic[
+                                            `category_${drones[key].project_category[cat]}`];
+                                    }
+                                }
+
+                                div.className = drone_class;
+
+                                let div_inside = document.createElement("div");
+                                div_inside.className = "container-card";
+
+                                let h4 = document.createElement("h4");
+
+                                let b = document.createElement("b");
+                                b.innerText = drones[key].title.rendered;
+
+                                h4.appendChild(b);
+
+                                let p = document.createElement("p");
+                                p.innerText = drone_brand;
+
+                                div_inside.appendChild(h4);
+                                div_inside.appendChild(p);
+
+                                let img = document.createElement("img");
+                                img.src = myJson2.guid.rendered;
+
+
+                                let anchor = document.createElement("a");
+                                anchor.href = drones[key].link;
+
+                                anchor.appendChild(img);
+                                anchor.appendChild(div_inside);
+                                div.appendChild(anchor);
+                                drones_div.appendChild(div);
+                            }).then(() => {
+                                jQuery('#cards .card').removeClass("fourth_drone");
+                                let visible_drones = document.querySelectorAll(".visible_drone");
+                                if (visible_drones.length >= 5) {
+                                    for (let w = 4; w < visible_drones.length; w += 5) {
+                                        visible_drones[w].classList.add('fourth_drone');
+                                    }
+                                }
+                            });
+                        //div.innerHTML = drones[key].title.rendered;
+                        //drones_div.appendChild(div);
+                    }
+                }
+                drones_el = document.getElementsByClassName("card");
+
+
+                /*let manufact_select = document.querySelector(".parent_id_31");
+                manufact_select.addEventListener('change', filter_drones);*/
+            });
+    </script>
